@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Customers</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Customers</h1>
+    <tr th:each="customer : ${customerList}">
+        <td th:text="${customer.getId()}"></td> , <td th:text="${customer.getFirstName()}"></td> <td th:text="${customer.getLastName()}"></td><br>
+    </tr>
+</body>
+</html>

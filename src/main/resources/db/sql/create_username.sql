@@ -1,0 +1,1 @@
+create table username(id integer primary key autoincrement, first_name text, last_name text);
