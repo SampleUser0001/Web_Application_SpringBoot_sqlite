@@ -2,14 +2,13 @@ package sample.webapp.repository;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
+import sample.webapp.repository.entity.CustomerEntity;
 
-import sample.webapp.entity.Customer;
+public interface CustomerRepository extends CrudRepository<CustomerEntity, Long> {
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
-
-  List<Customer> findAll();
+  List<CustomerEntity> findAll();
   // Customer findById(long id);
-  Customer save(Customer customer);
+  CustomerEntity save(CustomerEntity customer);
   // void deleteById(long id);
 
 }

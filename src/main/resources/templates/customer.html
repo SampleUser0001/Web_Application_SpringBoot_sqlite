@@ -6,8 +6,17 @@
 </head>
 <body>
     <h1>Customers</h1>
+    <h2>List</h2>
     <tr th:each="customer : ${customerList}">
         <td th:text="${customer.getId()}"></td> , <td th:text="${customer.getFirstName()}"></td> <td th:text="${customer.getLastName()}"></td><br>
     </tr>
+
+    <h2>Add</h2>
+    <form action="#" method="post" th:action="@{/customer}" th:object="${newcustomer}" >
+        <p>FirstName : <input type="text" th:field="*{firstName}" /></p>
+        <p>LastName : <input type="text" th:field="*{lastName}" /></p>
+        <p><input type="submit" value="登録" /></p>
+    </form>
+
 </body>
 </html>

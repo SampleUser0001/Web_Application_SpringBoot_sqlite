@@ -5,11 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import sample.webapp.entity.Customer;
 import sample.webapp.repository.CustomerRepository;
+import sample.webapp.repository.entity.CustomerEntity;
+
 import java.util.List;
+import java.util.ArrayList;
 
 @Controller
 public class CustomerController {
@@ -21,16 +24,17 @@ public class CustomerController {
         this.repo = repo;
     }
 
-    @GetMapping("/customer/findAll")
-    public String getCustomer(@RequestParam(name="customerList", required=false) List<Customer> customerList, Model model) {
+    @GetMapping("/customer")
+    public String getCustomer(@RequestParam(name="customerList", required=false) List<CustomerEntity> customerList, Model model) {
         customerList = repo.findAll();
         model.addAttribute("customerList", customerList);
+        model.addAttribute("newcustomer", new CustomerEntity());
         return "customer";
     }
-    
-    // @PostMapping("/customer/add")
-    // public String addCustomer((@RequestParam("newcustomer")) Customer newCustomer, Model model) {
-    //     repo.save(newCustomer);
-    //     return getCustomer(new ArrayList<Customer> customerList, model);
-    // }
+
+    @PostMapping("/customer")
+    public String addCustomer(@ModelAttribute CustomerEntity customer, Model model) {
+        repo.save(customer);
+        return getCustomer(new ArrayList<CustomerEntity>(), model);
+    }
 }
