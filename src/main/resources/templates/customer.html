@@ -3,6 +3,7 @@
 <head> 
     <title>Customers</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="modal.css">
 </head>
 <body>
     <h1>Customers</h1>
@@ -10,13 +11,16 @@
     <tr th:each="customer : ${customerList}">
         <td th:text="${customer.getId()}"></td> , <td th:text="${customer.getFirstName()}"></td> <td th:text="${customer.getLastName()}"></td><br>
     </tr>
+    
 
-    <h2>Add</h2>
-    <form action="#" method="post" th:action="@{/customer}" th:object="${newcustomer}" >
-        <p>FirstName : <input type="text" th:field="*{firstName}" /></p>
-        <p>LastName : <input type="text" th:field="*{lastName}" /></p>
-        <p><input type="submit" value="登録" /></p>
-    </form>
-
+    <div class="add-customer-button">登録</div>
+    <div class="add-customer-modal">
+        <h2>Add</h2>
+        <form action="#" method="post" th:action="@{/customer}" th:object="${newcustomer}" >
+            <p>FirstName : <input type="text" th:field="*{firstName}" /></p>
+            <p>LastName : <input type="text" th:field="*{lastName}" /></p>
+            <p><input type="submit" value="登録" /></p>
+        </form>
+    </div>
 </body>
 </html>
