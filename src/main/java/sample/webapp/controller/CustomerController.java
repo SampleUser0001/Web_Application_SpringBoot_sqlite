@@ -35,6 +35,6 @@ public class CustomerController {
     @PostMapping("/customer")
     public String addCustomer(@ModelAttribute CustomerEntity customer, Model model) {
         repo.save(customer);
-        return getCustomer(new ArrayList<CustomerEntity>(), model);
+        return "redirect:/customer";
     }
 }
